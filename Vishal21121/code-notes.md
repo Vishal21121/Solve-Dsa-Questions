@@ -1,3 +1,5 @@
+## Arrays
+
 ### Question-1
 
 - [Count Frequency in a range](https://www.codingninjas.com/studio/problems/count-frequency-in-a-range_8365446?leftPanelTab=0)
@@ -31,3 +33,51 @@
         }
     }
 ```
+
+### Question-2
+
+- [Sum of second largest in even position and second smallest number in odd position](https://prepinsta.com/accenture-coding-question-2/)
+
+- topic - `arrays`
+
+- #### Approach
+    - Initialised large, secLarge with `Integer.MIN_VALUE`, small and secSmall with `Integer.MAX_VALUE` value
+    - Iterated till the array length and checked if the position is even or odd
+    - If even then check whether the number is greater than large if yes then assign secLarge with large value and assign large with `arr[i]`
+    - If odd then check whether the number is smaller than small if yes then assign secSmall with smalll value and assign small with `arr[i]`
+    - Finally return the sum of `secLarge` and `secSmall`.
+
+- #### Code
+```java
+    public class SumOfSecondSmallestAndSecondLargest {
+    public static void main(String[] args) {
+        int[] arr = new int[]{1,8,0,2,3,5,6};
+        System.out.println(sum(arr));
+    }
+    static int sum(int[] arr){
+        int large=Integer.MIN_VALUE,secLarge=Integer.MIN_VALUE, small=Integer.MAX_VALUE, secSmall=Integer.MAX_VALUE;
+        for(int i=0;i<arr.length;i++){
+            if(i%2==0){
+                if(arr[i]>large){
+                    secLarge = large;
+                    large = arr[i];
+                }else if(arr[i]>secLarge && arr[i]!=large){
+                    secLarge = arr[i];
+                }
+            }else{
+                if(arr[i]<small){
+                    secSmall = small;
+                    small = arr[i];
+                }else if(arr[i]<secSmall && arr[i]!=small){
+                    secSmall = arr[i];
+                }
+            }
+        }
+        return secLarge + secSmall;
+    }
+}
+
+```
+
+> Note: The time complexity of the above approach is O(n) + O(n) which is O(2n) ignoring the constant it is O(n)
+
