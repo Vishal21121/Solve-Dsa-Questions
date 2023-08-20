@@ -81,3 +81,36 @@
 
 > Note: The time complexity of the above approach is O(n) + O(n) which is O(2n) ignoring the constant it is O(n)
 
+### Question-3
+
+- [Terms Of AP](https://www.codingninjas.com/studio/problems/terms-of-ap_9065116?challengeSlug=ninja-slayground)
+
+- topic - `arrays`
+
+- #### Approach
+    - Initialised `count = 0`, `j=1` and created and array `arr` with the size of x (as we have to store the x elements which are not divisble by 4)
+    - Iterated while loop until count becomes x and checked if the number in the series is divisible 4 if not then add the number in the array and increase the count
+    - finally return this array.
+
+- #### Code
+```java
+    import java.util.* ;
+    import java.io.*; 
+    public class Solution {
+        public static int[] termsOfAP(int x){
+            int count = 0;
+            int j = 1;
+            int[] arr = new int[x];
+            while(count!=x){
+                if((3*j+2)%4!=0){
+                    arr[count] = 3*j+2;
+                    count++;
+                }
+                j++;
+            }
+            return arr;
+        }
+    }
+
+```
+
