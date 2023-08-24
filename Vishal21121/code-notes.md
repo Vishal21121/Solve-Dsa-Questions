@@ -164,6 +164,93 @@
 
 > Reason: If we carefully observe, we can notice that the outer loop, say i, is running from 0 to n-2 i.e. n-1 times, and for each i, the inner loop j runs from i to n-1. For, i = 0, the inner loop runs n-1 times, for i = 1, the inner loop runs n-2 times, and so on. So, the total steps will be approximately the following: (n-1) + (n-2) + (n-3) + ……..+ 3 + 2 + 1. The summation is approximately the sum of the first n natural numbers i.e. (n*(n+1))/2. The precise time complexity will be O(n2/2 + n/2). Previously, we have learned that we can ignore the lower values as well as the constant coefficients. So, the time complexity is O(n2). Here the value of n is N i.e. the size of the array.
 
+### Question-5
+
+- [Bubble Sort](https://www.codingninjas.com/studio/problems/bubble-sort_624380)
+
+- topic - `arrays` `sorting`
+
+- #### Approach
+   - Iterated the array for n-1 passes (n=array length)
+   - Used the second loop to iterate the array till second last element of the unsorted part of the array.
+   - boolean swap variable is used to check whether the array is sorted or not if the array is sorted then we do not have to run the second loop for every pass so in the first pass no swapping occurs then it means that array is sorted hence break the loop.
+   - for dry run and more detailed explanation [visit](https://takeuforward.org/data-structure/bubble-sort-algorithm/)
+
+- #### Code
+```java
+
+public class Solution {
+  public static void bubbleSort(int[] arr, int n) {
+    boolean swap = false;
+    for(int i=1;i<n;i++){
+      swap = false;
+      for(int j=0;j<=n-1-i;j++){
+        if(arr[j]>arr[j+1]){
+          int temp = arr[j];
+          arr[j] = arr[j+1];
+          arr[j+1]=temp;
+          swap = true;
+        }
+
+      }
+      if(!swap){
+        break;
+      }
+    }
+  }
+
+}
+```
+
+#### Note:
+- Time complexity
+    - O(n^2) for worst and average case
+    - O(n) for best case ( and it happens when array is sorted )
+- Space Complexity
+  - O(1)
+
+### Question-6
+
+- Insertion Sort
+
+- topic - `arrays` `sorting`
+
+- #### Approach
+  - Iterate for n pass where n is the length of the array.
+  - Iterate from ith element towards the left in inner loop while checking that j-1 element should be smaller than jth element if not then go inside the loop and swap until the jth element is at the correct index.
+
+- #### Code
+```java
+import java.util.Arrays;
+
+public class InsertionSort {
+    public static void main(String[] args) {
+        int[] arr = new int[]{1,2,3,4,5};
+        insertionSort(arr,arr.length);
+        System.out.println(Arrays.toString(arr));
+    }
+    static void insertionSort(int[] arr,int n){
+        for(int i=0;i<n;i++){
+            int j=i;
+            while(j>0 && arr[j-1]>arr[j]){
+                int temp = arr[j];
+                arr[j] = arr[j-1];
+                arr[j-1] = temp;
+                j--;
+            }
+        }
+    }
+}
+
+```
+
+#### Note:
+- Time complexity
+  - O(n^2) for worst and average case
+  - O(n) for best case ( if the array is sorted )
+- Space complexity
+  - O(1) 
+
 
 
 
