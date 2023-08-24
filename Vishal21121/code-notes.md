@@ -251,6 +251,120 @@ public class InsertionSort {
 - Space complexity
   - O(1) 
 
+### Question-7
+
+
+- [Merge Sort](https://www.codingninjas.com/studio/problems/merge-sort_5846?leftPanelTab=0)
+
+- topic - `arrays` `sorting`
+
+- #### Approach
+  - Basic understanding
+    - This is a divide and conqueror approach in which we will divide and merge array.
+    - Dividing means we will not create separate array, we will divide the array using index.
+  - Actual approach: 
+    - We will create two functions mergeSort and merge, mergeSort will be responsible for diving the array until there is only element left in the array and merge will merge the two arrays of single element or array of more than one elements.
+    - MergeSort
+      - So, in mergeSort(), we will divide the array around the middle index(rather than creating a separate array) by making the recursive call :
+        1. mergeSort(arr,low,mid)   [Left half of the array]
+        2. mergeSort(arr,mid+1,high)  [Right half of the array]
+        where low = leftmost index of the array, high = rightmost index of the array, and mid = middle index of the array.
+      - Now, in order to complete the recursive function, we need to write the base case as well. so from the above understanding we know that we need to return when there is only one element left in the array and that can be achieved by `if(low>=high) break;`
+      - pseudo code:
+          ```java
+            mergeSort(arr,low,high){
+              if(low>=high)
+                break;
+              int mid = (low+high)/2;
+              mergeSort(arr,low,mid);
+              mergeSort(arr,mid+1,high);
+              merge(arr,low,mid,high);
+            }
+          ```
+    - Merge
+      - In the merge function, we will use a temp array to store the elements of the two sorted arrays after merging. Here, the range of the left array is low to mid and the range for the right half is mid+1 to high.
+      - Now we will take two pointers left and right, where left starts from low and right starts from mid+1.
+      - Using a while loop `while(left <= mid && right <= high)`, we will select two elements, one from each half, and will consider the smallest one among the two. Then, we will insert the smallest element in the temp array.
+      - After that, the left-out elements in both halves will be copied as it is into the temp array.
+      - Now, we will just transfer the elements of the temp array to the range low to high in the original array. The pseudo code will look like the following:
+      ```java
+        static void merge(int[]arr, int low,int mid,int high){
+          int left = low;
+          int right = mid+1;
+          ArrayList<Integer> list = new ArrayList<>();
+          while(left<=mid && right<=high){
+            if(arr[left]<=arr[right]){
+              list.add(arr[left]);
+              left++;
+            }else{
+              list.add(arr[right]);
+              right++;
+            }
+          }
+          while(left<=mid){
+            list.add(arr[left]);
+            left++;
+          }
+          while(right<=high){
+            list.add(arr[right]);
+            right++;
+          }
+          for(int i=low;i<=high;i++){
+            arr[i] = list.get(i-low);
+          }
+        }
+        
+      ```
+- #### Code
+```java
+import java.util.ArrayList;
+
+public class Solution {
+
+  public static void mergeSort(int[] arr, int l, int r){
+    if(l>=r){
+      return;
+    }
+    int mid = (l+r)/2;
+    mergeSort(arr, l, mid);
+    mergeSort(arr, mid+1, r);
+    merge(arr,l,mid,r);
+  }
+  static void merge(int[]arr, int low,int mid,int high){
+    int left = low;
+    int right = mid+1;
+    ArrayList<Integer> list = new ArrayList<>();
+    while(left<=mid && right<=high){
+      if(arr[left]<=arr[right]){
+        list.add(arr[left]);
+        left++;
+      }else{
+        list.add(arr[right]);
+        right++;
+      }
+    }
+    while(left<=mid){
+      list.add(arr[left]);
+      left++;
+    }
+    while(right<=high){
+      list.add(arr[right]);
+      right++;
+    }
+    for(int i=low;i<=high;i++){
+      arr[i] = list.get(i-low);
+    }
+  }
+}
+
+```
+
+#### Note:
+- Time complexity:
+    - O(nlogn)  ( Reason: At each step, we divide the whole array, for that logn and we assume n steps are taken to get a sorted array, so overall time complexity will be nlogn )
+- Space compplexity:
+    - O(n)  (Reason: We are using a temporary array to store elements in sorted order.)
+
 
 
 
