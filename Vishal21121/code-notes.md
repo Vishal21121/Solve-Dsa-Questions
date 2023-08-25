@@ -365,6 +365,58 @@ public class Solution {
 - Space compplexity:
     - O(n)  (Reason: We are using a temporary array to store elements in sorted order.)
 
+### Question-8
 
+<!-- question name within [] and link within () -->
+- [Quick Sort](https://www.codingninjas.com/studio/problems/quick-sort_983625?leftPanelTab=0)
+
+- topic - `arrays` `sorting`
+
+- #### Approach
+  - for approach [visit](https://takeuforward.org/data-structure/quick-sort-algorithm/)
+
+- #### Code
+```java
+import java.util.* ;
+import java.io.*; 
+public class Solution {
+    public static List<Integer> quickSort(List<Integer> arr){
+        sorter(arr, 0, arr.size()-1);
+        return arr;
+    }
+
+    static void sorter(List<Integer> arr,int low,int high){
+        if(low>high){ 
+            return;
+        }
+        int pivotIndex = placePivot(arr,low,high);
+        sorter(arr,low,pivotIndex-1);
+        sorter(arr, pivotIndex+1, high);
+    }
+
+    static int placePivot(List<Integer> arr, int low, int high){
+        int pivot = arr.get(low);
+        int i = low, j=high;
+        while(i<j){
+            while(arr.get(i)<=pivot && i<=high-1){
+                i++;
+            }
+            while(arr.get(j)>pivot && j>=low+1){
+                j--;
+            }
+            if(i<j){
+                swap(arr, i, j);
+            }
+        }
+        swap(arr, low, j);
+        return j;
+    }
+    static void swap(List<Integer> list, int first, int second){
+        int temp = list.get(first);
+        list.set(first,list.get(second));
+        list.set(second,temp);
+    }
+}
+```
 
 
