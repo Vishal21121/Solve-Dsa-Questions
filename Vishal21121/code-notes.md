@@ -372,6 +372,11 @@ public class Solution {
 
 - topic - `arrays` `sorting`
 
+- #### Some more info:
+  - It's not a stable algorithm
+  - In place sorting algorithm that's why it is prefered over merge sort because it does not take O(n) extra space which merge sort takes. Merge sort is better in linked list because the memory allocation is not continous.
+
+
 - #### Approach
   - for approach [visit](https://takeuforward.org/data-structure/quick-sort-algorithm/)
 
@@ -418,5 +423,11 @@ public class Solution {
     }
 }
 ```
+
+#### Note:
+- Time complexity: 
+    - Worst case: `O(n^2)` ( it happens when pivot element is the largest number or the smallest number in the array so if the pivot number is largest then all the numbers will be towards the left which will result into the recurrence relation `T(n) = T(0) + T(n-1) + O(n)` which will lead to O(n^2))
+  - Best case: `O(nlogn)`
+- Space complexity: `O(1)`
 
 
