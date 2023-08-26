@@ -426,8 +426,109 @@ public class Solution {
 
 #### Note:
 - Time complexity: 
-    - Worst case: `O(n^2)` ( it happens when pivot element is the largest number or the smallest number in the array so if the pivot number is largest then all the numbers will be towards the left which will result into the recurrence relation `T(n) = T(0) + T(n-1) + O(n)` which will lead to O(n^2))
+    - Worst case: `O(n^2)` ( it happens when pivot element is the largest number or the smallest number in the array so if the pivot number is largest, then all the numbers will be towards the left which will result into the recurrence relation `T(n) = T(0) + T(n-1) + O(n)` which will lead to O(n^2))
   - Best case: `O(nlogn)`
 - Space complexity: `O(1)`
+
+### Question-9
+
+- **Print from N to 1**
+
+- topic - `arrays` `recursion`
+
+- #### Approach
+  - Taking n as parameter
+  - if n==0 then return and this is the base case.
+  - we will print the n
+  - Then we call printReverse(n-1)
+  - 
+
+- #### Code
+```java
+    // question: You are given a number n and the task is to print from n to 1. using recursion
+public class PrintInReverse {
+  public static void main(String[] args) {
+    printReverse(5);
+  }
+  static void printReverse(int n){
+    if(n==0){
+      return;
+    }
+    System.out.println(n);
+    printReverse(n-1);
+  }
+}
+```
+
+### Question-10
+
+- **Print from 1 to n**
+
+- topic - `arrays` `recursion`
+
+- #### Approach
+  - Took the number n as parameter
+  - If n==0 then return as we want to print till 1
+  - Else call the function again with `n-1` as the value and then print the number n.
+  - When printer(1) is called it will call printer(0) but as we have added the check that if n==0 return, so it will not do anything and function will return after that in printer(1) we will print the n value which is 1 then printer(1) will complete its execution as a result it will return to the place where it was called.
+  - ![img_1.png](img_1.png)
+- #### Code
+```java
+    // The task is to print numbers from 1 to n when you are provided the number n
+public class PrintFrom1ToN {
+  public static void main(String[] args) {
+    printer(5);
+  }
+  static void printer(int n){
+    if(n==0){
+      return;
+    }
+    printer(n-1);
+    System.out.println(n);
+  }
+}
+
+```
+
+### Question-11
+
+- Factorial
+
+- topic - `arrays` `recursion`
+
+- #### Approach
+  - for approach - 1
+      - we are taking two parameters n and mul
+      - if n==0 or n==1 we will return mul (if n==0 or n==1 is passed then we will return 1 as we are passing mul=1 initially)
+      - Then we are calculating `mul = mul * n`
+      - Then we are calling `factorial(n-1,mull)`. Hence, for the value n=5 the flow will be like ![img_2.png](img_2.png)
+  - for approach - 2
+      - We are taking only one parameter that is n and if n==1 || n==0 then we will return 1
+      - Else we will call n * factorial(n-1).
+      - Now lets see the flow for n=5![img_4.png](img_4.png)
+- #### Code
+```java
+   public class MultiplyNTo1 {
+  public static void main(String[] args) {
+    System.out.println(factorial(6,1));
+    System.out.println(factorial_1(6));
+  }
+  //    approach -1
+  static int factorial(int n, int mul){
+    if(n==0 || n==1){
+      return mul;
+    }
+    mul = mul * n;
+    return factorial(n-1,mul);
+  }
+  //    approach - 2
+  static int factorial_1(int n){
+    if(n==0 || n==1){
+      return 1;
+    }
+    return n*factorial_1(n-1);
+  }
+}
+```
 
 
