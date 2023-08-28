@@ -7,11 +7,13 @@
 - topic - `arrays` `HashMap`
 
 - #### Approach
-    - Initialised the map with element of the nums array as key and occurrence as the value.
-    - Iterated the nums array and checked whether the element is there in map if yes then increase the count by one and if not then make it `one`.
-    - Then iterate from 1 to n and check whether the ith number is there in the map if yes then store the occurrence in the array `arr` and if not then store zero in the array `arr` at that index.
+
+  - Initialised the map with element of the nums array as key and occurrence as the value.
+  - Iterated the nums array and checked whether the element is there in map if yes then increase the count by one and if not then make it `one`.
+  - Then iterate from 1 to n and check whether the ith number is there in the map if yes then store the occurrence in the array `arr` and if not then store zero in the array `arr` at that index.
 
 - #### Code
+
 ```java
     import java.util.HashMap;
 
@@ -41,13 +43,15 @@
 - topic - `arrays`
 
 - #### Approach
-    - Initialised large, secLarge with `Integer.MIN_VALUE`, small and secSmall with `Integer.MAX_VALUE` value
-    - Iterated till the array length and checked if the position is even or odd
-    - If even then check whether the number is greater than large if yes then assign secLarge with large value and assign large with `arr[i]`
-    - If odd then check whether the number is smaller than small if yes then assign secSmall with smalll value and assign small with `arr[i]`
-    - Finally return the sum of `secLarge` and `secSmall`.
+
+  - Initialised large, secLarge with `Integer.MIN_VALUE`, small and secSmall with `Integer.MAX_VALUE` value
+  - Iterated till the array length and checked if the position is even or odd
+  - If even then check whether the number is greater than large if yes then assign secLarge with large value and assign large with `arr[i]`
+  - If odd then check whether the number is smaller than small if yes then assign secSmall with smalll value and assign small with `arr[i]`
+  - Finally return the sum of `secLarge` and `secSmall`.
 
 - #### Code
+
 ```java
     public class SumOfSecondSmallestAndSecondLargest {
     public static void main(String[] args) {
@@ -88,14 +92,16 @@
 - topic - `arrays`
 
 - #### Approach
-    - Initialised `count = 0`, `j=1` and created and array `arr` with the size of x (as we have to store the x elements which are not divisble by 4)
-    - Iterated while loop until count becomes x and checked if the number in the series is divisible 4 if not then add the number in the array and increase the count
-    - finally return this array.
+
+  - Initialised `count = 0`, `j=1` and created and array `arr` with the size of x (as we have to store the x elements which are not divisble by 4)
+  - Iterated while loop until count becomes x and checked if the number in the series is divisible 4 if not then add the number in the array and increase the count
+  - finally return this array.
 
 - #### Code
+
 ```java
     import java.util.* ;
-    import java.io.*; 
+    import java.io.*;
     public class Solution {
         public static int[] termsOfAP(int x){
             int count = 0;
@@ -113,6 +119,7 @@
     }
 
 ```
+
 ### Question-4
 
 - [Selection Sort](https://www.codingninjas.com/studio/problems/selection-sort_624469?leftPanelTab=0)
@@ -120,12 +127,14 @@
 - topic - `arrays` `sorting`
 
 - #### Approach
-    - we need to itearate for n-1 pass where (n= array's length)
-    - In each iteration we will find the min number index from the array start=i to end=n-1 and then we will swap the min number with the i index.
-    - So after each iteration we will have sorted array towards the left of i index.
-  ![img.png](img.png)
+
+  - we need to itearate for n-1 pass where (n= array's length)
+  - In each iteration we will find the min number index from the array start=i to end=n-1 and then we will swap the min number with the i index.
+  - So after each iteration we will have sorted array towards the left of i index.
+    ![img.png](img.png)
 
 - #### Code
+
 ```java
     import java.util.Arrays;
 
@@ -152,17 +161,18 @@
         }
         return minIndex;
       }
-    
+
     }
 
 
 ```
 
 #### Note:
-- **Time complexity: O(N2)**, (where N = size of the array), for the best, worst, and average cases. 
+
+- **Time complexity: O(N2)**, (where N = size of the array), for the best, worst, and average cases.
 - **Space Complexity: O(1)**,
 
-> Reason: If we carefully observe, we can notice that the outer loop, say i, is running from 0 to n-2 i.e. n-1 times, and for each i, the inner loop j runs from i to n-1. For, i = 0, the inner loop runs n-1 times, for i = 1, the inner loop runs n-2 times, and so on. So, the total steps will be approximately the following: (n-1) + (n-2) + (n-3) + ……..+ 3 + 2 + 1. The summation is approximately the sum of the first n natural numbers i.e. (n*(n+1))/2. The precise time complexity will be O(n2/2 + n/2). Previously, we have learned that we can ignore the lower values as well as the constant coefficients. So, the time complexity is O(n2). Here the value of n is N i.e. the size of the array.
+> Reason: If we carefully observe, we can notice that the outer loop, say i, is running from 0 to n-2 i.e. n-1 times, and for each i, the inner loop j runs from i to n-1. For, i = 0, the inner loop runs n-1 times, for i = 1, the inner loop runs n-2 times, and so on. So, the total steps will be approximately the following: (n-1) + (n-2) + (n-3) + ……..+ 3 + 2 + 1. The summation is approximately the sum of the first n natural numbers i.e. (n\*(n+1))/2. The precise time complexity will be O(n2/2 + n/2). Previously, we have learned that we can ignore the lower values as well as the constant coefficients. So, the time complexity is O(n2). Here the value of n is N i.e. the size of the array.
 
 ### Question-5
 
@@ -171,12 +181,14 @@
 - topic - `arrays` `sorting`
 
 - #### Approach
-   - Iterated the array for n-1 passes (n=array length)
-   - Used the second loop to iterate the array till second last element of the unsorted part of the array.
-   - boolean swap variable is used to check whether the array is sorted or not if the array is sorted then we do not have to run the second loop for every pass so in the first pass no swapping occurs then it means that array is sorted hence break the loop.
-   - for dry run and more detailed explanation [visit](https://takeuforward.org/data-structure/bubble-sort-algorithm/)
+
+  - Iterated the array for n-1 passes (n=array length)
+  - Used the second loop to iterate the array till second last element of the unsorted part of the array.
+  - boolean swap variable is used to check whether the array is sorted or not if the array is sorted then we do not have to run the second loop for every pass so in the first pass no swapping occurs then it means that array is sorted hence break the loop.
+  - for dry run and more detailed explanation [visit](https://takeuforward.org/data-structure/bubble-sort-algorithm/)
 
 - #### Code
+
 ```java
 
 public class Solution {
@@ -203,9 +215,10 @@ public class Solution {
 ```
 
 #### Note:
+
 - Time complexity
-    - O(n^2) for worst and average case
-    - O(n) for best case ( and it happens when array is sorted )
+  - O(n^2) for worst and average case
+  - O(n) for best case ( and it happens when array is sorted )
 - Space Complexity
   - O(1)
 
@@ -216,10 +229,12 @@ public class Solution {
 - topic - `arrays` `sorting`
 
 - #### Approach
+
   - Iterate for n pass where n is the length of the array.
   - Iterate from ith element towards the left in inner loop while checking that j-1 element should be smaller than jth element if not then go inside the loop and swap until the jth element is at the correct index.
 
 - #### Code
+
 ```java
 import java.util.Arrays;
 
@@ -245,14 +260,14 @@ public class InsertionSort {
 ```
 
 #### Note:
+
 - Time complexity
   - O(n^2) for worst and average case
   - O(n) for best case ( if the array is sorted )
 - Space complexity
-  - O(1) 
+  - O(1)
 
 ### Question-7
-
 
 - [Merge Sort](https://www.codingninjas.com/studio/problems/merge-sort_5846?leftPanelTab=0)
 
@@ -262,25 +277,25 @@ public class InsertionSort {
   - Basic understanding
     - This is a divide and conqueror approach in which we will divide and merge array.
     - Dividing means we will not create separate array, we will divide the array using index.
-  - Actual approach: 
+  - Actual approach:
     - We will create two functions mergeSort and merge, mergeSort will be responsible for diving the array until there is only element left in the array and merge will merge the two arrays of single element or array of more than one elements.
     - MergeSort
       - So, in mergeSort(), we will divide the array around the middle index(rather than creating a separate array) by making the recursive call :
-        1. mergeSort(arr,low,mid)   [Left half of the array]
-        2. mergeSort(arr,mid+1,high)  [Right half of the array]
-        where low = leftmost index of the array, high = rightmost index of the array, and mid = middle index of the array.
+        1. mergeSort(arr,low,mid) [Left half of the array]
+        2. mergeSort(arr,mid+1,high) [Right half of the array]
+           where low = leftmost index of the array, high = rightmost index of the array, and mid = middle index of the array.
       - Now, in order to complete the recursive function, we need to write the base case as well. so from the above understanding we know that we need to return when there is only one element left in the array and that can be achieved by `if(low>=high) break;`
       - pseudo code:
-          ```java
-            mergeSort(arr,low,high){
-              if(low>=high)
-                break;
-              int mid = (low+high)/2;
-              mergeSort(arr,low,mid);
-              mergeSort(arr,mid+1,high);
-              merge(arr,low,mid,high);
-            }
-          ```
+        ```java
+          mergeSort(arr,low,high){
+            if(low>=high)
+              break;
+            int mid = (low+high)/2;
+            mergeSort(arr,low,mid);
+            mergeSort(arr,mid+1,high);
+            merge(arr,low,mid,high);
+          }
+        ```
     - Merge
       - In the merge function, we will use a temp array to store the elements of the two sorted arrays after merging. Here, the range of the left array is low to mid and the range for the right half is mid+1 to high.
       - Now we will take two pointers left and right, where left starts from low and right starts from mid+1.
@@ -313,9 +328,10 @@ public class InsertionSort {
             arr[i] = list.get(i-low);
           }
         }
-        
+
       ```
 - #### Code
+
 ```java
 import java.util.ArrayList;
 
@@ -360,30 +376,34 @@ public class Solution {
 ```
 
 #### Note:
+
 - Time complexity:
-    - O(nlogn)  ( Reason: At each step, we divide the whole array, for that logn and we assume n steps are taken to get a sorted array, so overall time complexity will be nlogn )
+  - O(nlogn) ( Reason: At each step, we divide the whole array, for that logn and we assume n steps are taken to get a sorted array, so overall time complexity will be nlogn )
 - Space compplexity:
-    - O(n)  (Reason: We are using a temporary array to store elements in sorted order.)
+  - O(n) (Reason: We are using a temporary array to store elements in sorted order.)
 
 ### Question-8
 
 <!-- question name within [] and link within () -->
+
 - [Quick Sort](https://www.codingninjas.com/studio/problems/quick-sort_983625?leftPanelTab=0)
 
 - topic - `arrays` `sorting`
 
 - #### Some more info:
+
   - It's not a stable algorithm
   - In place sorting algorithm that's why it is prefered over merge sort because it does not take O(n) extra space which merge sort takes. Merge sort is better in linked list because the memory allocation is not continous.
 
-
 - #### Approach
+
   - for approach [visit](https://takeuforward.org/data-structure/quick-sort-algorithm/)
 
 - #### Code
+
 ```java
 import java.util.* ;
-import java.io.*; 
+import java.io.*;
 public class Solution {
     public static List<Integer> quickSort(List<Integer> arr){
         sorter(arr, 0, arr.size()-1);
@@ -391,7 +411,7 @@ public class Solution {
     }
 
     static void sorter(List<Integer> arr,int low,int high){
-        if(low>high){ 
+        if(low>high){
             return;
         }
         int pivotIndex = placePivot(arr,low,high);
@@ -425,8 +445,9 @@ public class Solution {
 ```
 
 #### Note:
-- Time complexity: 
-    - Worst case: `O(n^2)` ( it happens when pivot element is the largest number or the smallest number in the array so if the pivot number is largest, then all the numbers will be towards the left which will result into the recurrence relation `T(n) = T(0) + T(n-1) + O(n)` which will lead to O(n^2))
+
+- Time complexity:
+  - Worst case: `O(n^2)` ( it happens when pivot element is the largest number or the smallest number in the array so if the pivot number is largest, then all the numbers will be towards the left which will result into the recurrence relation `T(n) = T(0) + T(n-1) + O(n)` which will lead to O(n^2))
   - Best case: `O(nlogn)`
 - Space complexity: `O(1)`
 
@@ -437,13 +458,15 @@ public class Solution {
 - topic - `arrays` `recursion`
 
 - #### Approach
+
   - Taking n as parameter
   - if n==0 then return and this is the base case.
   - we will print the n
   - Then we call printReverse(n-1)
-  - 
+  -
 
 - #### Code
+
 ```java
     // question: You are given a number n and the task is to print from n to 1. using recursion
 public class PrintInReverse {
@@ -473,6 +496,7 @@ public class PrintInReverse {
   - When printer(1) is called it will call printer(0) but as we have added the check that if n==0 return, so it will not do anything and function will return after that in printer(1) we will print the n value which is 1 then printer(1) will complete its execution as a result it will return to the place where it was called.
   - ![img_1.png](img_1.png)
 - #### Code
+
 ```java
     // The task is to print numbers from 1 to n when you are provided the number n
 public class PrintFrom1ToN {
@@ -498,15 +522,16 @@ public class PrintFrom1ToN {
 
 - #### Approach
   - for approach - 1
-      - we are taking two parameters n and mul
-      - if n==0 or n==1 we will return mul (if n==0 or n==1 is passed then we will return 1 as we are passing mul=1 initially)
-      - Then we are calculating `mul = mul * n`
-      - Then we are calling `factorial(n-1,mull)`. Hence, for the value n=5 the flow will be like ![img_2.png](img_2.png)
+    - we are taking two parameters n and mul
+    - if n==0 or n==1 we will return mul (if n==0 or n==1 is passed then we will return 1 as we are passing mul=1 initially)
+    - Then we are calculating `mul = mul * n`
+    - Then we are calling `factorial(n-1,mull)`. Hence, for the value n=5 the flow will be like ![img_2.png](img_2.png)
   - for approach - 2
-      - We are taking only one parameter that is n and if n==1 || n==0 then we will return 1
-      - Else we will call n * factorial(n-1).
-      - Now lets see the flow for n=5![img_4.png](img_4.png)
+    - We are taking only one parameter that is n and if n==1 || n==0 then we will return 1
+    - Else we will call n \* factorial(n-1).
+    - Now lets see the flow for n=5![img_4.png](img_4.png)
 - #### Code
+
 ```java
    public class MultiplyNTo1 {
   public static void main(String[] args) {
@@ -531,4 +556,39 @@ public class PrintFrom1ToN {
 }
 ```
 
+### Question-12
 
+<!-- question name within [] and link within () -->
+
+- **Product of Digits**
+
+- topic - `arrays` `recursion`
+
+- #### Approach
+
+  1. If n is a single-digit number (i.e., n is less than 10), the function returns n itself.
+
+  2. Otherwise, the last digit of n is extracted using the modulo operation n % 10, and this digit is multiplied by the result of calling the productDigits function recursively on the remaining part of n obtained by removing the last digit (n / 10).
+
+  3. The result of step ii is the product of the individual digits of the original number n.
+
+  The code recursively breaks down the problem by working with the last digit of the number and then handling the rest of the number. This process continues until the number is reduced to a single digit, and the multiplication of digits is computed as the recursion unwinds.
+
+  ![Alt text](image.png)
+
+- #### Code
+
+```java
+  public class ProductOfDigits {
+    public static void main(String[] args) {
+        System.out.println(productDigits(11));
+    }
+    static int productDigits(int n){
+        if(n%10==n){
+            return n;
+        }
+        int el = n%10;
+        return el * productDigits(n/10);
+    }
+}
+```
