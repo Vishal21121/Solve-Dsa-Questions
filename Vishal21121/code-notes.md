@@ -274,10 +274,12 @@ public class InsertionSort {
 - topic - `arrays` `sorting`
 
 - #### Approach
+
   - Basic understanding
     - This is a divide and conqueror approach in which we will divide and merge array.
     - Dividing means we will not create separate array, we will divide the array using index.
   - Actual approach:
+
     - We will create two functions mergeSort and merge, mergeSort will be responsible for diving the array until there is only element left in the array and merge will merge the two arrays of single element or array of more than one elements.
     - MergeSort
       - So, in mergeSort(), we will divide the array around the middle index(rather than creating a separate array) by making the recursive call :
@@ -297,11 +299,13 @@ public class InsertionSort {
           }
         ```
     - Merge
+
       - In the merge function, we will use a temp array to store the elements of the two sorted arrays after merging. Here, the range of the left array is low to mid and the range for the right half is mid+1 to high.
       - Now we will take two pointers left and right, where left starts from low and right starts from mid+1.
       - Using a while loop `while(left <= mid && right <= high)`, we will select two elements, one from each half, and will consider the smallest one among the two. Then, we will insert the smallest element in the temp array.
       - After that, the left-out elements in both halves will be copied as it is into the temp array.
       - Now, we will just transfer the elements of the temp array to the range low to high in the original array. The pseudo code will look like the following:
+
       ```java
         static void merge(int[]arr, int low,int mid,int high){
           int left = low;
@@ -330,6 +334,7 @@ public class InsertionSort {
         }
 
       ```
+
 - #### Code
 
 ```java
@@ -589,6 +594,38 @@ public class PrintFrom1ToN {
         }
         int el = n%10;
         return el * productDigits(n/10);
+    }
+}
+```
+
+### Question-13
+
+<!-- question name within [] and link within () -->
+
+- **Sum of digits**
+
+- topic - `arrays` `recursion`
+
+- #### Approach
+
+  - Taking the element as input
+  - At each function call we are taking each digit from the number and then adding it with the rest of digits of the number by making another function call.
+  - If the number is 0 or after taking out all the digits n becomes 0 then we return the function
+    ![Alt text](image-1.png)
+
+- #### Code
+
+```java
+   public class SumOfDigits {
+    public static void main(String[] args) {
+        System.out.println(sumDigits(112));
+    }
+    static int sumDigits(int n){
+        if(n==0){
+            return 0;
+        }
+        int el = n%10;
+        return el + sumDigits(n/10);
     }
 }
 ```
