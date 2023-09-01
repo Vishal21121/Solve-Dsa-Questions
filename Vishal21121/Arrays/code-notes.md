@@ -1,5 +1,8 @@
 ## Arrays
 
+- [Question-1](###Question-1)
+- [Question-2](###Question-2)
+
 ### Question-1
 
 - [Count Frequency in a range](https://www.codingninjas.com/studio/problems/count-frequency-in-a-range_8365446?leftPanelTab=0)
@@ -626,6 +629,32 @@ public class PrintFrom1ToN {
         }
         int el = n%10;
         return el + sumDigits(n/10);
+    }
+}
+```
+
+### Question-14
+
+- **Sum of 1 to n**
+
+- topic - `arrays` `recursion`
+
+- #### Approach
+  - Taking a number as input
+  - In each function call taking a number and adding it with the n-1 numbers.
+  - Base condition: when n==0 then return 0
+- #### Code
+
+```java
+   public class SumOf1ToN {
+    public static void main(String[] args) {
+        System.out.println(sum(100));
+    }
+    static int sum(int n){
+        if(n==0){
+            return 0;
+        }
+        return n+sum(n-1);
     }
 }
 ```
