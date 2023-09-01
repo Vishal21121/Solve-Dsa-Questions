@@ -44,3 +44,49 @@ class Solution {
     }
 }
 ```
+
+### Question-2
+
+- [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/)
+
+- topic - `LinkedList`
+
+- #### Approach
+
+  - We have to return a LinkedList with two sorted LinkedList merged together.
+  - We will iterate each LinkedList until `list1!=null` and `list2!=null` and check if `list1.val < list2.val` then add the `list1` else add `list2` and at the end one of LinkedList will be traversed fully and one will be left.
+  - Add the left LinkedList `temp.next = (list1!=null) ? list1 : list2;`
+
+- #### Code
+
+```java
+    /**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        ListNode LL = new ListNode();
+        ListNode temp = LL;
+        while(list1!=null && list2!=null){
+            if(list1.val <= list2.val){
+                temp.next = list1;
+                list1 = list1.next;
+                temp = temp.next;
+            }else{
+                temp.next = list2;
+                list2 = list2.next;
+                temp = temp.next;
+            }
+        }
+        temp.next = (list1!=null) ? list1 : list2;
+        return LL.next;
+    }
+}
+```
