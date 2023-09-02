@@ -1,7 +1,10 @@
 ## Arrays
 
+<!-- TOC -->
+
 - [Question-1](###Question-1)
 - [Question-2](###Question-2)
+<!-- /TOC -->
 
 ### Question-1
 
