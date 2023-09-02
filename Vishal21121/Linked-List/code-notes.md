@@ -138,3 +138,135 @@ public class Solution {
     }
 }
 ```
+
+### Note:
+
+- Time complexity: O(n)
+- Space complexity: O(1)
+
+### Question-4
+
+- [Find length of Loop](https://practice.geeksforgeeks.org/problems/find-length-of-loop/1)
+
+- topic - `LinkedList`
+
+- #### Approach
+
+  - We need to find whether there is cycle in the LinkedList
+  - We are using **fast-slow pointer method**
+  - In the fast-slow-pointer method fast pointer moves by two position while slow pointer moves by one position.
+  - And in this way fast and slow pointer will meet each other if there is cycle in the LinkedList.
+  - So we are iterating till `fast!=null` and `fast.next!=null` if this condition breaks means fast is at tha last Node.
+  - If the above condition does not break then we are moving fast by two position and slow pointer moves by one position and if they meet each other means we got the cycle.
+  - At this point slow and fast pointer points to the same node, now we will run the slow pointer till it comes back to this position and we will count the length.
+  - In this way we will get the length of the loop.
+
+- #### Code
+
+```java
+  //{ Driver Code Starts
+// driver code
+
+import java.util.*;
+import java.io.*;
+import java.lang.*;
+
+class Node
+{
+    int data;
+    Node next;
+
+    Node(int x)
+    {
+        data = x;
+        next = null;
+    }
+}
+
+class GFG
+{
+    public static void makeLoop(Node head, Node tail, int x){
+        if (x == 0) return;
+
+        Node curr = head;
+        for(int i=1; i<x; i++)
+            curr = curr.next;
+
+        tail.next = curr;
+    }
+
+    public static void main (String[] args){
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+
+        while(t--> 0)
+        {
+            int n = sc.nextInt();
+
+            int num = sc.nextInt();
+            Node head = new Node(num);
+            Node tail = head;
+
+            for(int i=0; i<n-1; i++)
+            {
+                num = sc.nextInt();
+                tail.next = new Node(num);
+                tail = tail.next;
+            }
+
+            int pos = sc.nextInt();
+            makeLoop(head, tail, pos);
+
+            Solution x = new Solution();
+            System.out.println( x.countNodesinLoop(head) );
+        }
+    }
+}
+
+// } Driver Code Ends
+
+
+/*
+
+class Node
+{
+    int data;
+    Node next;
+    Node(int d) {data = d; next = null; }
+}
+
+*/
+
+//Function should return the length of the loop in LL.
+
+class Solution
+{
+    //Function to find the length of a loop in the linked list.
+    static int countNodesinLoop(Node head)
+    {
+        // This method is known as fast and slow pointer method
+       Node fast = head;
+       Node slow = head;
+
+       // we are having this condition to check that fast is pointing to last node of linked list. If yes then break
+       while(fast!=null && fast.next!=null){
+           fast = fast.next.next;
+           slow = slow.next;
+           if(fast==slow){
+                int length = 0;
+                do{
+                    slow = slow.next;
+                    length++;
+                }while(slow!=fast);
+                return length;
+           }
+       }
+       return 0;
+    }
+}
+```
+
+### Note:
+
+- Time complexity: O(n)
+- Space complexity: O(1)
