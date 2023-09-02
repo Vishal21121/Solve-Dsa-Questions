@@ -90,3 +90,51 @@ class Solution {
     }
 }
 ```
+
+### Question-3
+
+- [Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/)
+
+- topic - `LinkedList`
+
+- #### Approach
+
+  - We need to find whether there is cycle in the LinkedList
+  - We are using **fast-slow pointer method**
+  - In the fast-slow-pointer method fast pointer moves by two position while slow pointer moves by one position.
+  - And in this way fast and slow pointer will meet each other if there is cycle in the LinkedList.
+  - So we are iterating till `fast!=null` and `fast.next!=null` if this condition breaks means fast is at tha last Node.
+  - If the above condition does not break then we are moving fast by two position and slow pointer moves by one position and if they meet each other means we got the cycle.
+
+- #### Code
+
+```java
+   /**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+    // This method is known as fast and slow pointer method
+       ListNode fast = head;
+       ListNode slow = head;
+
+       // we are having this condition to check that fast is pointing to last node of linked list. If yes then break
+       while(fast!=null && fast.next!=null){
+           fast = fast.next.next;
+           slow = slow.next;
+           if(fast==slow){
+               return true;
+           }
+       }
+       return false;
+    }
+}
+```
