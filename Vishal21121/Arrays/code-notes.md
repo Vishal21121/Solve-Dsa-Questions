@@ -1,10 +1,23 @@
 ## Arrays
 
-<!-- TOC -->
+<!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
 
-- [Question-1](###Question-1)
-- [Question-2](###Question-2)
-<!-- /TOC -->
+- [Question-1](#question-1)
+- [Question-2](#question-2)
+- [Question-3](#question-3)
+- [Question-4](#question-4)
+- [Question-5](#question-5)
+- [Question-6](#question-6)
+- [Question-7](#question-7)
+- [Question-8](#question-8)
+- [Question-9](#question-9)
+- [Question-10](#question-10)
+- [Question-11](#question-11)
+- [Question-12](#question-12)
+- [Question-13](#question-13)
+- [Question-14](#question-14)
+
+<!-- TOC end -->
 
 ### Question-1
 
