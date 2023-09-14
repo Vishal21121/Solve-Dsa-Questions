@@ -270,3 +270,69 @@ class Solution
 
 - Time complexity: O(n)
 - Space complexity: O(1)
+
+### Question-5
+
+- [Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii/)
+
+- topic - `LinkedList`
+
+- #### Approach
+- Initialize two pointers, fast and slow, both pointing to the head of the linked list.
+- Move fast two steps at a time and slow one step at a time until they meet or the end of the list is reached.
+  If there is no cycle, return null.
+- Calculate the length of the cycle by moving slow one step at a time until it meets fast again, incrementing a counter for each step.
+- Move slow and fast back to the head of the list, and then move slow ahead by the size of the loop and then move both fast and slow pointers one step at a time until they meet again and this point is the start of the loop so return this node of the cycle.
+
+- #### Code
+
+```java
+    /**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public ListNode detectCycle(ListNode head) {
+        ListNode fast = head;
+        ListNode slow = head;
+        int count = 0;
+        while(fast!=null && fast.next != null){
+            fast=fast.next.next;
+            slow = slow.next;
+            if(fast==slow){
+                do{
+                    slow = slow.next;
+                    count++;
+                }while(slow!=fast);
+                break;
+            }
+        }
+        if(count==0){
+            return null;
+        }
+        slow = head;
+        fast = head;
+
+        for(int i=1;i<=count;i++){
+            slow = slow.next;
+        }
+        while(fast!=slow){
+            fast=fast.next;
+            slow = slow.next;
+        }
+        return fast;
+    }
+}
+```
+
+#### Note:
+
+- Time complexity: O(n)
+- Space complexity: O(1)
