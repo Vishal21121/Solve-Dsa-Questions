@@ -336,3 +336,109 @@ public class Solution {
 
 - Time complexity: O(n)
 - Space complexity: O(1)
+
+### Question-6
+
+- [Happy Number](https://leetcode.com/problems/happy-number/)
+
+- topic - `LinkedList`
+
+- #### Approach
+
+1. The isHappy(int n) method is the main method that checks if a given integer n is a Happy Number. It uses the Floyd Cycle detection algorithm (also known as the "tortoise and the hare" algorithm) to detect if there's a cycle in the sequence of sums of squares of digits.
+
+- Two pointers, slow and fast, are initialized to the input number n.
+- In a loop, slow is replaced by the sum of squares of its digits, while fast is replaced twice (this is why it's "faster").
+- If at any point slow equals fast, it means a cycle is detected.
+- If the cycle is at 1 (i.e., slow==1), then the number is a Happy Number and the method returns true. If not, it returns false tutorialstonight.com.
+
+2. The findSquare(int num) method is a helper method that calculates and returns the sum of the squares of the digits of a given number num.
+
+- It initializes a sum (ans) to 0.
+- Then in a loop, it calculates the remainder of num divided by 10 (which gives the last digit), squares it, and adds it to ans.
+- num is then divided by 10 to remove the last digit.
+- This process continues until num becomes 0, at which point ans is returned
+
+- #### Code
+
+```java
+    class Solution {
+    public boolean isHappy(int n) {
+        int slow = n;
+        int fast = n;
+        do{
+            slow = findSquare(slow);
+            fast = findSquare(findSquare(fast));
+        }while(slow!=fast);
+        if(slow==1){
+            return true;
+        }
+        return false;
+    }
+    static int findSquare(int num){
+        int ans = 0;
+        while(num>0){
+            int rem = num % 10;
+            ans += rem * rem;
+            num/= 10;
+        }
+        return ans;
+    }
+}
+```
+
+#### Note:
+
+- Time complexity: O(n)
+- Space complexity: O(1)
+
+### Question-7
+
+- [Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list/)
+
+- topic - `LinkedList`
+
+- #### Approach
+
+1. The middleNode(ListNode head) method is the main method that finds the middle node of a linked list.
+
+- It initializes two pointers, slow and fast, to the head of the list.
+- Then, in a loop, slow moves one step at a time while fast moves two steps at a time.
+- The loop continues until fast reaches the end of the list or has no next node.
+- When the loop ends, slow will be at the middle of the list, so it is returned as the middle node
+
+2. The ListNode class is a definition for a node in a singly linked list.
+
+- Each ListNode has an integer value (val) and a reference to the next ListNode (next).
+- There are three constructors: a default constructor, a constructor that takes a value, and a constructor that takes a value and a next node
+
+- #### Code
+
+```java
+    /**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode middleNode(ListNode head) {
+        ListNode fast = head;
+        ListNode slow = head;
+        while(fast!=null && fast.next!=null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
+}
+```
+
+#### Note:
+
+- Time complexity: O(n)
+- Space complexity: O(1)
