@@ -59,3 +59,46 @@
     }
 }
 ```
+
+### Question-3
+
+- [Goal Parser Interpretation](https://leetcode.com/problems/goal-parser-interpretation/description/)
+
+- topic - `string`
+
+- #### Approach
+
+1. Convert the given command string into a character array using toCharArray() method.
+2. Create a StringBuilder object to store the modified string.
+3. Iterate over each character in the command string using a for loop.
+4. If the current character is 'G', append 'G' to the StringBuilder object.
+5. If the current character is '(', check the next character:
+   - If the next character is ')', append 'o' to the StringBuilder object and increment the loop index by 1.
+   - If the next character is 'a', append "al" to the StringBuilder object and increment the loop index by 3.
+6. After the loop, convert the StringBuilder object to a string using toString() method and return the modified string.
+
+- #### Code
+
+```java
+   class Solution {
+    public String interpret(String command) {
+       char[] name = command.toCharArray();
+       StringBuilder newName = new StringBuilder();
+       for(int i=0;i<name.length;i++){
+           if(name[i]=='G'){
+               newName.append('G');
+           }else if (name[i]=='('){
+               if(name[i+1]==')'){
+                  newName.append('o');
+                   i+=1;
+               }else if(name[i+1]=='a'){
+                   newName.append("al");
+                   i+=3;
+               }
+
+           }
+       }
+       return newName.toString();
+    }
+}
+```
