@@ -674,3 +674,39 @@ public class PrintFrom1ToN {
     }
 }
 ```
+
+### Question-15
+
+- [Build Array from Permutation](https://leetcode.com/problems/build-array-from-permutation/description/)
+
+- topic - `arrays`
+
+- #### Approach
+
+1. The buildArray method receives an integer array nums as input. It calls the helper method setNumbers passing the array and index 0 as parameters. After the setNumbers method finishes execution, buildArray returns the modified nums array.
+2. The helper method setNumbers uses recursion to modify the input array. It takes two parameters, an integer array arr and an integer index. The index parameter is used to keep track of the current element in the array that needs to be modified.
+3. The first line in setNumbers checks if index is greater than or equal to the length of the array. If it is, the method returns, ending the recursion. This serves as the base case for the recursion.
+4. If index is less than the length of the array, the method proceeds to get the value at the index `arr[arr[index]]` in the array and store it in val. This value is used as the new index to get another value from the array.
+5. The method then recursively calls itself, incrementing index by 1. This allows the method to process the next element in the array.
+6. After the recursive call, the method assigns the value of val (which is `arr[arr[index]]`) to arr[index]. This effectively replaces each element in the array with the value at the index equal to the original element's value.
+7. The recursion continues until all elements in the array have been processed. The modified array is then returned by the buildArray method
+
+- #### Code
+
+```java
+   class Solution {
+    public int[] buildArray(int[] nums) {
+       setNumbers(nums,0);
+       return nums;
+    }
+    static void setNumbers(int[] arr, int index){
+        if(index>=arr.length){
+            return;
+        }
+        int val = arr[arr[index]];
+        setNumbers(arr,index+1);
+        arr[index] = val;
+    }
+
+}
+```
