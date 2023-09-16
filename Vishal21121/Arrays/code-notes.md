@@ -710,3 +710,56 @@ public class PrintFrom1ToN {
 
 }
 ```
+
+### Question-16
+
+- [Concatenation of Array](https://leetcode.com/problems/concatenation-of-array/description/)
+
+- topic - `arrays`
+
+- #### Approach
+
+  - Approach - 1:
+    1. It begins by defining a method getConcatenation(int[] nums), which takes an integer array nums as its argument.
+    2. It then declares an integer n and assigns it the length of the input array nums.
+    3. A new integer array arr is created with a length twice that of n to accommodate the concatenation of nums with itself.
+    4. The System.arraycopy() function is then used twice to copy the nums array into arr. The first call to System.arraycopy() copies the elements of nums into the first half of arr, and the second call to System.arraycopy() copies the elements of nums into the second half of arr.
+    5. The method then returns the arr array, which is the concatenation of nums with itself.
+  - Approach - 2:
+    - Create a new integer array arr with a length twice that of the input array nums.
+    - Use a for loop to iterate over the elements of the input array nums.
+    - Inside the loop, assign the current element of nums to the corresponding index in arr.
+    - Also, assign the current element of nums to the index nums.length + i in arr. This effectively duplicates the elements of nums in arr.
+    - Finally, return the arr array.
+
+- #### Code
+
+- Approach - 1
+
+  ```java
+     class Solution {
+      public int[] getConcatenation(int[] nums) {
+          int n = nums.length;
+          int[] arr = new int[n+n];
+          System.arraycopy(nums,0,arr,0,n);
+          System.arraycopy(nums,0,arr,n,n);
+          return arr;
+      }
+    }
+  ```
+
+- Approach - 2
+
+  ```java
+    class Solution {
+      public int[] getConcatenation(int[] nums) {
+          int[] arr = new int[2*nums.length];
+          for(int i=0;i<nums.length;i++){
+                  arr[i] = nums[i];
+                  arr[nums.length+i] = nums[i];
+          }
+          return arr;
+      }
+    }
+
+  ```
