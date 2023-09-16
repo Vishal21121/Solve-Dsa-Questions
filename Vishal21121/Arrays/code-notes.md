@@ -16,6 +16,8 @@
 - [Question-12](#question-12)
 - [Question-13](#question-13)
 - [Question-14](#question-14)
+- [Question-15](#question-15)
+- [Question-16](#question-16)
 
 <!-- TOC end -->
 
@@ -683,33 +685,56 @@ public class PrintFrom1ToN {
 
 - #### Approach
 
-1. The buildArray method receives an integer array nums as input. It calls the helper method setNumbers passing the array and index 0 as parameters. After the setNumbers method finishes execution, buildArray returns the modified nums array.
-2. The helper method setNumbers uses recursion to modify the input array. It takes two parameters, an integer array arr and an integer index. The index parameter is used to keep track of the current element in the array that needs to be modified.
-3. The first line in setNumbers checks if index is greater than or equal to the length of the array. If it is, the method returns, ending the recursion. This serves as the base case for the recursion.
-4. If index is less than the length of the array, the method proceeds to get the value at the index `arr[arr[index]]` in the array and store it in val. This value is used as the new index to get another value from the array.
-5. The method then recursively calls itself, incrementing index by 1. This allows the method to process the next element in the array.
-6. After the recursive call, the method assigns the value of val (which is `arr[arr[index]]`) to arr[index]. This effectively replaces each element in the array with the value at the index equal to the original element's value.
-7. The recursion continues until all elements in the array have been processed. The modified array is then returned by the buildArray method
+  - Approach - 1
+
+    1. The buildArray method receives an integer array nums as input. It calls the helper method setNumbers passing the array and index 0 as parameters. After the setNumbers method finishes execution, buildArray returns the modified nums array.
+    2. The helper method setNumbers uses recursion to modify the input array. It takes two parameters, an integer array arr and an integer index. The index parameter is used to keep track of the current element in the array that needs to be modified.
+    3. The first line in setNumbers checks if index is greater than or equal to the length of the array. If it is, the method returns, ending the recursion. This serves as the base case for the recursion.
+    4. If index is less than the length of the array, the method proceeds to get the value at the index `arr[arr[index]]` in the array and store it in val. This value is used as the new index to get another value from the array.
+    5. The method then recursively calls itself, incrementing index by 1. This allows the method to process the next element in the array.
+    6. After the recursive call, the method assigns the value of val (which is `arr[arr[index]]`) to arr[index]. This effectively replaces each element in the array with the value at the index equal to the original element's value.
+    7. The recursion continues until all elements in the array have been processed. The modified array is then returned by the buildArray method
+
+  - Approach - 2
+
+    1. `int[] arr = new int[nums.length];`: This line creates a new integer array arr with the same length as the input array nums. This array will store the modified elements.
+    2. `for(int i=0;i<nums.length;i++)`: This line starts a for loop that iterates over each index i in the range from 0 to the length of the input array nums.
+    3. `arr[i] = nums[nums[i]];` : This line assigns the value at index `nums[i]` in the input array nums to the corresponding index i in the new array arr. The value at `nums[i]` is used as the index to access the element in nums that will be assigned to `arr[i]`.
+    4. Finally, the modified array arr is returned.
 
 - #### Code
+- Approach - 1
 
-```java
-   class Solution {
-    public int[] buildArray(int[] nums) {
-       setNumbers(nums,0);
-       return nums;
-    }
-    static void setNumbers(int[] arr, int index){
-        if(index>=arr.length){
-            return;
-        }
-        int val = arr[arr[index]];
-        setNumbers(arr,index+1);
-        arr[index] = val;
-    }
+  ```java
+    class Solution {
+      public int[] buildArray(int[] nums) {
+        setNumbers(nums,0);
+        return nums;
+      }
+      static void setNumbers(int[] arr, int index){
+          if(index>=arr.length){
+              return;
+          }
+          int val = arr[arr[index]];
+          setNumbers(arr,index+1);
+          arr[index] = val;
+      }
 
-}
-```
+  }
+  ```
+
+- Approach - 2
+  ```java
+    class Solution {
+      public int[] buildArray(int[] nums) {
+          int[] arr = new int[nums.length];
+          for(int i=0;i<nums.length;i++){
+              arr[i] = nums[nums[i]];
+          }
+          return arr;
+      }
+    }
+  ```
 
 ### Question-16
 
@@ -763,3 +788,34 @@ public class PrintFrom1ToN {
     }
 
   ```
+
+### Question-17
+
+- [Running Sum of 1d Array](https://leetcode.com/problems/running-sum-of-1d-array/description/)
+
+- topic - `arrays`
+
+- #### Approach
+- Create a new array arr with the same length as the input array nums.
+- Initialize a variable sum to 0 to store the running sum.
+- Iterate over the elements of the input array nums using a for loop.
+- In each iteration, add the current element to the sum variable.
+- Assign the value of sum to the corresponding index of the arr array.
+- After the loop completes, return the arr array.
+
+- #### Code
+
+```java
+   class Solution {
+    public int[] runningSum(int[] nums) {
+        int n = nums.length;
+        int[] arr = new int[n];
+        int sum = 0;
+        for(int i=0;i<n;i++){
+            sum += nums[i];
+            arr[i] = sum;
+        }
+        return arr;
+    }
+}
+```
