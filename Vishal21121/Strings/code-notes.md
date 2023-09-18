@@ -102,3 +102,37 @@
     }
 }
 ```
+
+### Question-4
+
+- [Sorting the Sentence](https://leetcode.com/problems/sorting-the-sentence/description/)
+
+- topic - `string`
+
+- #### Approach
+
+1. Split the input sentence s into an array of words using space as the delimiter, storing it in the array variable.
+2. Create a new array called newArray with the same length as array to store the sorted words.
+3. Iterate through each word in the array:
+   - Extract the last character of the word using array[i].charAt(array[i].length()-1).
+   - Parse the last character as an integer and subtract 1 to get the correct index for the sorted array, storing it in the variable n.
+   - Remove the last character from the word using array[i].substring(0,array[i].length()-1).
+   - Place the modified word into the newArray at the index n-1.
+4. After processing all words, use String.join(" ", newArray) to concatenate the words in the newArray into a single string with space-separated words.
+5. Return the sorted sentence.
+
+- #### Code
+
+```java
+   class Solution {
+    public String sortSentence(String s) {
+        String[] array = s.split(" ");
+        String[] newArray = new String[array.length];
+        for(int i=0;i<array.length;i++){
+            int n = Integer.parseInt(String.valueOf(array[i].charAt(array[i].length()-1)));
+            newArray[n-1] = array[i].substring(0,array[i].length()-1);
+        }
+        return String.join(" ",newArray);
+    }
+}
+```
