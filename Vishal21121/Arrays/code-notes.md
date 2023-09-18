@@ -819,3 +819,64 @@ public class PrintFrom1ToN {
     }
 }
 ```
+
+### Question-18
+
+- [Richest Customer Wealth](https://leetcode.com/problems/richest-customer-wealth/description/)
+
+- topic - `arrays`
+
+- #### Approach
+
+1. Initialize two integer variables, sum and max, to store the sum of the wealth of an individual and the maximum wealth found so far, respectively. Both are initially set to 0.
+2. Use a nested for loop to traverse the 2D array. The outer loop iterates over the rows (individuals) and the inner loop iterates over the columns (banks).
+
+```java
+     for(int i=0;i<accounts.length;i++){
+       for(int j=0;j<accounts[i].length;j++){
+           sum+=accounts[i][j];
+       }
+   }
+```
+
+3. In the inner loop, add the wealth (accounts[i][j]) of each bank to the sum variable
+4. After iterating over each bank for a given individual, compare the sum with max. If sum is greater than max, update max with the value of sum
+
+```java
+     if(sum>max){
+       max = sum;
+   }
+
+```
+
+5. Reset sum to 0 before moving on to the next individual (next row in the 2D array)
+
+```java
+  sum = 0
+```
+
+6. After iterating over all individuals, return max which now holds the maximum wealth found among all individuals
+
+```java
+     return max;
+```
+
+- #### Code
+
+```java
+  class Solution {
+    public int maximumWealth(int[][] accounts) {
+        int sum = 0, max = 0;
+        for(int i=0;i<accounts.length;i++){
+            for(int j=0;j<accounts[i].length;j++){
+                sum+=accounts[i][j];
+            }
+            if(sum>max){
+                max = sum;
+            }
+            sum = 0;
+        }
+        return max;
+    }
+}
+```
