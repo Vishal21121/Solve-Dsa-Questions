@@ -136,3 +136,23 @@
     }
 }
 ```
+
+### Question-5
+
+- [Check If Two String Arrays are Equivalent](https://leetcode.com/problems/check-if-two-string-arrays-are-equivalent/description/)
+
+- topic - `string`
+
+- #### Approach
+
+- #### Code
+
+```java
+    class Solution {
+    public boolean arrayStringsAreEqual(String[] word1, String[] word2) {
+        StringBuilder str1 = new StringBuilder(String.join("",word1));
+        StringBuilder str2 = new StringBuilder(String.join("",word2));
+        return str1.toString().equals(str2.toString());
+    }
+}
+```
