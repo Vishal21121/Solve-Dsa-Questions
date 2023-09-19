@@ -145,6 +145,14 @@
 
 - #### Approach
 
+1. The code defines a method called arrayStringsAreEqual that takes two arrays of strings, word1 and word2, as input.
+
+2. It creates two StringBuilder objects, str1 and str2, initialized with the result of joining the strings in word1 and word2, respectively, into a single string without any separators.
+
+3. The code then compares the two resulting strings using the equals method and returns true if they are equal and false otherwise.
+
+4. In essence, the method checks if the concatenation of strings in word1 is equal to the concatenation of strings in word2.
+
 - #### Code
 
 ```java
@@ -156,3 +164,60 @@
     }
 }
 ```
+
+### Question-6
+
+- [To Lower Case](https://leetcode.com/problems/to-lower-case/description/)
+
+- topic - `string`
+
+- #### Approach
+
+  - Approach - 1
+
+    1. Input: The code takes a string s as input.
+
+    2. StringBuilder: It initializes a StringBuilder named builder to efficiently build the resulting string.
+
+    3. Loop: It iterates through each character of the input string s using a for loop.
+
+    4. Character Check: Within the loop, it checks if the current character is an uppercase letter (A-Z).
+
+    5. Conversion: If the character is uppercase, it converts it to lowercase by adding 32 to its ASCII value and then appends the lowercase character to the builder.
+
+    6. Appending: If the character is not an uppercase letter, it appends the original character to the builder.
+
+    7. Result: Finally, it returns the resulting string obtained from the builder after processing all characters in the input string.
+
+  - Approach - 2:
+    1. Use the builtin string method to convert string to lowercase.
+
+- #### Code
+
+- Approach - 1
+
+  ```java
+      class Solution {
+      public String toLowerCase(String s) {
+          StringBuilder builder = new StringBuilder();
+          for(int i=0;i<s.length();i++){
+              if(s.charAt(i)>='A' && s.charAt(i)<='Z'){
+                  char ch = (char)(s.charAt(i)+32);
+                  builder.append(ch);
+              }else{
+                  builder.append(s.charAt(i));
+              }
+          }
+          return builder.toString();
+      }
+  }
+  ```
+
+- Approach - 2
+  ```java
+  class Solution {
+      public String toLowerCase(String s) {
+          return s.toLowerCase();
+      }
+  }
+  ```
