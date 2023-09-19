@@ -221,3 +221,46 @@
       }
   }
   ```
+
+### Question-7
+
+- [Determine if String Halves Are Alike](https://leetcode.com/problems/determine-if-string-halves-are-alike/description/)
+
+- topic - `strings`
+
+- #### Approach
+
+1. Calculate the middle index of the input string s.
+2. Initialize two counters, count1 and count2, to keep track of the number of vowels in the first and second halves of the string.
+3. Iterate through the first half of the string (from index 0 to mid-1):
+   - Check each character in this half to see if it is a vowel (both uppercase and lowercase).
+   - If a vowel is found, increment count1.
+4. Iterate through the second half of the string (from index mid to the end):
+   - Check each character in this half to see if it is a vowel (both uppercase and lowercase).
+   - If a vowel is found, increment count2.
+5. Finally, compare count1 and count2 to determine if the number of vowels in the first half is equal to the number of vowels in the second half.
+6. Return true if the counts are equal, indicating that the halves of the string have the same number of vowels, and false otherwise.
+
+- #### Code
+
+```java
+    class Solution {
+    public boolean halvesAreAlike(String s) {
+        int mid = s.length()/2;
+        int count1 = 0, count2 = 0;
+        for(int i=0;i<mid;i++){
+            char ch = s.charAt(i);
+            if(ch=='a' || ch=='e' || ch=='i' || ch=='o' || ch=='u' || ch=='A' || ch=='E' ||  ch=='I' || ch=='O' || ch=='U'){
+                count1 ++;
+            }
+        }
+        for(int i=mid;i<s.length();i++){
+            char ch = s.charAt(i);
+            if(ch=='a' || ch=='e' || ch=='i' || ch=='o' || ch=='u' || ch=='A' || ch=='E' ||  ch=='I' || ch=='O' || ch=='U'){
+                      count2 ++;
+            }
+        }
+        return count1==count2;
+    }
+}
+```
