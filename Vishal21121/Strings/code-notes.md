@@ -325,3 +325,52 @@
     }
 }
 ```
+
+### Question-10
+
+- [Robot Return to Origin](https://leetcode.com/problems/robot-return-to-origin/description/)
+
+- topic - `string`
+
+- #### Approach
+
+1. The code defines a public method named judgeCircle that takes a single argument moves, which is a string representing a sequence of moves.
+
+2. Two integer variables, x and y, are initialized to 0. These variables will be used to track the current position.
+
+3. A for loop iterates through each character in the moves string.
+
+4. Inside the loop, the code checks the current character:
+
+   - If it's 'U', it increments the y variable (moving up).
+   - If it's 'D', it decrements the y variable (moving down).
+   - If it's 'L', it increments the x variable (moving left).
+   - If it's 'R', it decrements the x variable (moving right).
+
+5. After processing all the moves, the code checks if both x and y are equal to 0. If they are, it returns true, indicating that the moves result in returning to the starting position. Otherwise, it returns false.
+
+- #### Code
+
+```java
+    class Solution {
+    public boolean judgeCircle(String moves) {
+        int y = 0, x = 0;
+        for(int i=0;i<moves.length();i++){
+            if(moves.charAt(i)=='U'){
+                y++;
+            }else if(moves.charAt(i)=='D'){
+                y--;
+            }
+            if(moves.charAt(i)=='L'){
+                x++;
+            }else if(moves.charAt(i)=='R'){
+                x--;
+            }
+        }
+        if(x==0 && y==0){
+            return true;
+        }
+        return false;
+    }
+}
+```
