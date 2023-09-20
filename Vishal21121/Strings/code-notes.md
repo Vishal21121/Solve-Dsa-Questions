@@ -412,3 +412,26 @@
     }
 }
 ```
+
+### Question-12
+
+- [Find the Index of the First Occurrence in a String](https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/description/)
+
+- topic - `string`
+
+- #### Approach
+
+1. Define a method named strStr that takes two string parameters: haystack and needle.
+2. Use the indexOf method on the haystack string to find the first occurrence of the needle string.
+3. Return the index of the first occurrence of needle in haystack.
+4. If needle is not found in haystack, the indexOf method returns -1.
+
+- #### Code
+
+```java
+   class Solution {
+    public int strStr(String haystack, String needle) {
+        return haystack.indexOf(needle);
+    }
+}
+```
