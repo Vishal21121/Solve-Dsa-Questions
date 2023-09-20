@@ -374,3 +374,41 @@
     }
 }
 ```
+
+### Question-11
+
+- [Reverse Words in a String III](https://leetcode.com/problems/reverse-words-in-a-string-iii/description/)
+
+- topic - `string`
+
+- #### Approach
+
+1. Initialize two StringBuilder objects: result for the final reversed string and temp for temporary word reversal.
+2. Split the input string s into an array of words using space (' ') as a delimiter and store it in the arr array.
+3. Iterate through each word in the arr array.
+4. Append the current word to the temp StringBuilder.
+5. Reverse the characters in temp to reverse the current word.
+6. Append the reversed word (now stored in temp) to the result StringBuilder.
+7. Add a space character (' ') to separate words.
+8. Reset the temp StringBuilder for the next word.
+9. After processing all words, trim any leading or trailing spaces from the result StringBuilder.
+10. Return the final reversed string as a result.
+
+- #### Code
+
+```java
+    class Solution {
+    public String reverseWords(String s) {
+        StringBuilder result = new StringBuilder();
+        StringBuilder temp = new StringBuilder();
+        String[] arr = s.split(" ");
+        for(String el: arr){
+            temp.append(el);
+            result.append(temp.reverse());
+            result.append(" ");
+            temp.setLength(0);
+        }
+        return result.toString().trim();
+    }
+}
+```
