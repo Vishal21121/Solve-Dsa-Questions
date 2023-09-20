@@ -273,8 +273,55 @@
 
 - #### Approach
 
+1. The code defines a method called lengthOfLastWord that takes a string s as input and returns an integer.
+
+2. It trims the input string s using the trim method. This removes any leading and trailing whitespace from the string.
+
+3. The trimmed string is then split into an array of words using the split method with a space (" ") as the delimiter. This effectively separates the input string into an array of words.
+
+4. The code returns the length of the last word in the array of words. It does this by accessing the last element of the array (at index arr.length-1) and then calculating its length using the length method.
+
 - #### Code
 
 ```java
-    // write your code
+    class Solution {
+    public int lengthOfLastWord(String s) {
+        String[] arr = s.trim().split(" ");
+        return arr[arr.length-1].length();
+    }
+}
+```
+
+### Question-9
+
+- [Number of Strings That Appear as Substrings in Word](https://leetcode.com/problems/number-of-strings-that-appear-as-substrings-in-word/description/)
+
+- topic - `string`
+
+- #### Approach
+
+1. The function numOfStrings takes two parameters: an array of strings patterns and a string word.
+
+2. It initializes a variable count to 0 to keep track of the number of patterns found in the word.
+
+3. It enters a loop that iterates through each element in the patterns array using an index variable i.
+
+4. Inside the loop, it checks if the word contains the current pattern from the patterns array by using the indexOf method. If the pattern is found (i.e., indexOf returns a value not equal to -1), it increments the count variable.
+
+5. Finally, the function returns the value of count, which represents the number of patterns found in the word.
+
+- #### Code
+
+```java
+   class Solution {
+    public int numOfStrings(String[] patterns, String word) {
+        int count = 0;
+        for(int i=0;i<patterns.length;i++){
+            if(word.indexOf(patterns[i])!=-1){
+                count++;
+            }
+        }
+        return count;
+    }
+}
 ```
