@@ -435,3 +435,42 @@
     }
 }
 ```
+
+### Question-13
+
+- [Longest Common Prefix](https://leetcode.com/problems/longest-common-prefix/description/)
+
+- topic - `string`
+
+- #### Approach
+
+1. Check if the input array strs is null or empty, and return an empty string if so.
+2. Sort the input array strs lexicographically using Arrays.sort(). This step helps to bring strings with common prefixes closer to each other.
+3. Get the first and last strings in the sorted array, which will have the maximum common prefix.
+4. Initialize a StringBuilder to build the common prefix.
+5. Iterate through the characters of the first and last strings simultaneously.
+6. If a character mismatch is found between the first and last strings, stop the loop.
+7. Append matching characters to the StringBuilder.
+8. Return the StringBuilder content as the longest common prefix.
+
+- #### Code
+
+```java
+    class Solution {
+    public String longestCommonPrefix(String[] strs) {
+            Arrays.sort(strs);
+            System.out.println(Arrays.toString(strs));
+            String first = strs[0];
+            String last = strs[strs.length-1];
+            StringBuilder builder = new StringBuilder();
+
+            for (int i=0; i<Math.min(first.length(), last.length()); i++) {
+                if (first.charAt(i) != last.charAt(i)) {
+                    break;
+                }
+                builder.append(first.charAt(i));
+            }
+            return builder.toString();
+        }
+}
+```
