@@ -474,3 +474,44 @@
         }
 }
 ```
+
+### Question-14
+
+- [Reverse Prefix of Word](https://leetcode.com/problems/reverse-prefix-of-word/description/)
+
+- topic - `string`
+
+- #### Approach
+
+1. Initialize a StringBuilder to build the result string.
+2. Find the index of the specified character 'ch' in the input 'word'.
+3. If 'ch' is not found (index is -1), return the original 'word' as there is no prefix to reverse.
+4. Append the substring from the beginning of 'word' up to and including 'ch' to the StringBuilder.
+5. Reverse the contents of the StringBuilder.
+6. Append the remaining substring (after 'ch') from 'word' to the StringBuilder.
+7. Convert the StringBuilder to a string and return it as the reversed prefix string.
+
+- #### Code
+
+```java
+   class Solution {
+    public String reversePrefix(String word, char ch) {
+        String result = "";
+        int index = -1;
+        StringBuilder builder = new StringBuilder();
+        for(int i=0;i<word.length();i++){
+            if(word.charAt(i)==ch){
+                index = i;
+                break;
+            }
+        }
+        if(index==-1){
+            return word;
+        }
+        builder.append(word.substring(0,index+1));
+        builder.reverse();
+        builder.append(word.substring(index+1,word.length()));
+        return builder.toString();
+    }
+}
+```
