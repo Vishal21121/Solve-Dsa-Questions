@@ -885,3 +885,38 @@ public class PrintFrom1ToN {
 
 - Time complexity: O(n\*m)
 - Space complexity: O(1)
+
+### Question-19
+
+<!-- question name within [] and link within () -->
+
+- [question name](https://google.com)
+
+- topic - `arrays` `string`
+
+- #### Approach
+
+- #### Code
+
+```java
+   import java.util.Arrays;
+
+public class SingleNumber {
+    public static void main(String[] args) {
+        int[] arr= new int[]{1,1,2};
+        System.out.println(singleNumber(arr));
+    }
+    public static int singleNumber(int[] nums) {
+        Arrays.sort(nums);
+        if(nums.length==1){
+            return nums[0];
+        }
+        for(int i=0;i<nums.length-1;i+=2){
+            if(nums[i]!=nums[i+1]){
+                return nums[i];
+            }
+        }
+        return nums[nums.length-1];
+    }
+}
+```
