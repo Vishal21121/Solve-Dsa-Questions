@@ -888,13 +888,24 @@ public class PrintFrom1ToN {
 
 ### Question-19
 
-<!-- question name within [] and link within () -->
+- [Single Number](https://leetcode.com/problems/single-number/description/)
 
-- [question name](https://google.com)
-
-- topic - `arrays` `string`
-
+- topic - `arrays`
 - #### Approach
+
+1. Create an array of integers named arr with some duplicate numbers.
+
+2. Define a singleNumber method that takes an integer array nums as input and returns the single number that appears only once in the array.
+
+3. Sort the input array nums using the Arrays.sort() method to group duplicate numbers together.
+
+4. Check if the length of the sorted array is 1. If it is, return the single element in the array, as there are no duplicates.
+
+5. Iterate through the sorted array using a for loop with a step of 2. This means you'll compare consecutive elements in pairs.
+
+6. If the current element nums[i] is not equal to the next element nums[i+1], return nums[i], as it is the single number.
+
+7. If no single number is found in the loop, return the last element nums[nums.length-1], as it is the single number.
 
 - #### Code
 
