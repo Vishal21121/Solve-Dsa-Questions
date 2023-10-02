@@ -893,41 +893,74 @@ public class PrintFrom1ToN {
 - topic - `arrays`
 - #### Approach
 
-1. Create an array of integers named arr with some duplicate numbers.
+- Approach-1
 
-2. Define a singleNumber method that takes an integer array nums as input and returns the single number that appears only once in the array.
+  1. Create an array of integers named arr with some duplicate numbers.
 
-3. Sort the input array nums using the Arrays.sort() method to group duplicate numbers together.
+  2. Define a singleNumber method that takes an integer array nums as input and returns the single number that appears only once in the array.
 
-4. Check if the length of the sorted array is 1. If it is, return the single element in the array, as there are no duplicates.
+  3. Sort the input array nums using the Arrays.sort() method to group duplicate numbers together.
 
-5. Iterate through the sorted array using a for loop with a step of 2. This means you'll compare consecutive elements in pairs.
+  4. Check if the length of the sorted array is 1. If it is, return the single element in the array, as there are no duplicates.
 
-6. If the current element nums[i] is not equal to the next element nums[i+1], return nums[i], as it is the single number.
+  5. Iterate through the sorted array using a for loop with a step of 2. This means you'll compare consecutive elements in pairs.
 
-7. If no single number is found in the loop, return the last element nums[nums.length-1], as it is the single number.
+  6. If the current element nums[i] is not equal to the next element nums[i+1], return nums[i], as it is the single number.
 
-- #### Code
+  7. If no single number is found in the loop, return the last element nums[nums.length-1], as it is the single number.
 
-```java
-   import java.util.Arrays;
+  - #### Code
 
-public class SingleNumber {
-    public static void main(String[] args) {
-        int[] arr= new int[]{1,1,2};
-        System.out.println(singleNumber(arr));
-    }
-    public static int singleNumber(int[] nums) {
-        Arrays.sort(nums);
-        if(nums.length==1){
-            return nums[0];
+  ```java
+    import java.util.Arrays;
+
+  public class SingleNumber {
+      public static void main(String[] args) {
+          int[] arr= new int[]{1,1,2};
+          System.out.println(singleNumber(arr));
+      }
+      public static int singleNumber(int[] nums) {
+          Arrays.sort(nums);
+          if(nums.length==1){
+              return nums[0];
+          }
+          for(int i=0;i<nums.length-1;i+=2){
+              if(nums[i]!=nums[i+1]){
+                  return nums[i];
+              }
+          }
+          return nums[nums.length-1];
+      }
+  }
+  ```
+
+- Approach-2
+
+- Initialize a variable el to 0. This variable will store the single number we're looking for.
+
+- Iterate through the input array arr using a for loop.
+
+- For each element arr[i] in the array, perform the XOR operation between the current value of el and arr[i] and update the value of el with the result.
+
+- The XOR operation has a property that when you XOR a number with itself, the result is 0 (a ^ a = 0). Since all numbers in the array occur twice except for one, XORing the duplicates will cancel each other out, leaving only the single number XORed with 0, which results in the single number itself.
+
+- Continue iterating through the entire array, performing XOR operations for each element.
+
+- After processing all elements in the array, the final value of el will be the single number, as all other numbers have been XORed away.
+
+- Return the value of el as the result, which is the single number in the array.
+
+  #### code:
+
+  ```java
+    class Solution {
+    public int singleNumber(int[] arr) {
+        int el = 0;
+        for(int i=0;i<arr.length;i++){
+    // performing Xor opeartion between two numbers and a ^ a = 0 and as we have each number repeated twice except one then all numbers will becomes 0 except one number and that number xor with 0 will result into that number.
+            el = el ^ arr[i];
         }
-        for(int i=0;i<nums.length-1;i+=2){
-            if(nums[i]!=nums[i+1]){
-                return nums[i];
-            }
-        }
-        return nums[nums.length-1];
+        return el;
     }
-}
-```
+  }
+  ```
