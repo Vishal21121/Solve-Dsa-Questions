@@ -964,3 +964,56 @@ public class PrintFrom1ToN {
     }
   }
   ```
+
+### Question-20
+
+- [Majority Element](https://leetcode.com/problems/majority-element/description/)
+
+- topic - `arrays`
+
+- #### Approach
+
+1. Initialize variables el to Integer.MIN_VALUE and count to 0.
+2. Iterate through the nums array using a for loop.
+3. For each element in the array:
+
+   - If count is 0, set el to the current element and increment count by 1.
+   - If the current element is equal to el, increment count.
+   - If the current element is different from el, decrement count.
+
+4. After the loop, the el variable will contain the majority element.
+5. Return the el as the majority element.
+
+- #### Code
+
+```java
+  class Solution {
+    public int majorityElement(int[] nums) {
+        int el = Integer.MIN_VALUE;
+        int count = 0;
+        for(int i=0;i<nums.length;i++){
+            if(count==0){
+                el = nums[i];
+                count++;
+            }else if (el==nums[i]){
+                count++;
+            }else{
+                count--;
+            }
+        }
+        return el;
+        // step for verifying whether this element is a majority element => not required in this question
+        // int count_1 = 0;
+        // for(int val: nums[i]){
+        //     if(val == el ){
+        //         count_1 ++;
+        //     }
+        // }
+        // if(count_1 > nums.length/2){
+        //     return el;
+        // }else{
+        //     return -1;
+        // }
+    }
+}
+```
