@@ -973,20 +973,22 @@ public class PrintFrom1ToN {
 
 - #### Approach
 
-1. Initialize variables el to Integer.MIN_VALUE and count to 0.
-2. Iterate through the nums array using a for loop.
-3. For each element in the array:
+- Approach-1
 
-   - If count is 0, set el to the current element and increment count by 1.
-   - If the current element is equal to el, increment count.
-   - If the current element is different from el, decrement count.
+  1. Initialize variables el to Integer.MIN_VALUE and count to 0.
+  2. Iterate through the nums array using a for loop.
+  3. For each element in the array:
 
-4. After the loop, the el variable will contain the majority element.
-5. Return the el as the majority element.
+  - If count is 0, set el to the current element and increment count by 1.
+  - If the current element is equal to el, increment count.
+  - If the current element is different from el, decrement count.
 
-- #### Code
+  4. After the loop, the el variable will contain the majority element.
+  5. Return the el as the majority element.
 
-```java
+  - #### Code
+
+  ```java
   class Solution {
     public int majorityElement(int[] nums) {
         int el = Integer.MIN_VALUE;
@@ -1015,5 +1017,46 @@ public class PrintFrom1ToN {
         //     return -1;
         // }
     }
-}
-```
+  }
+  ```
+
+- Approach-2
+
+  1. Create a HashMap to store the count of each element in the nums array.
+
+  2. Calculate the minimum count required for an element to be considered the majority element. This is determined by dividing the length of the nums array by 2.
+
+  3. Initialize a variable ans to store the majority element, initially set to 0.
+
+  4. Loop through the nums array and update the count of each element in the HashMap.
+
+  5. Iterate through the keys in the HashMap.
+
+  6. Check if the count of the current element is greater than the calculated length (minimum count for majority).
+
+  7. If the count is greater, set ans to the current element and break the loop.
+
+  8. Return the ans as the majority element.
+
+  #### Code:
+
+  ```java
+    class Solution {
+      public int majorityElement(int[] nums) {
+          HashMap<Integer,Integer> map = new HashMap<>();
+          int length = nums.length/2;
+          int ans = 0;
+          for(int i=0;i<nums.length;i++){
+              int val = map.getOrDefault(nums[i],0);
+              map.put(nums[i],val+1);
+          }
+          for(int el : map.keySet()){
+              if(map.get(el)>length){
+                  ans =  el;
+                  break;
+              }
+          }
+          return ans;
+      }
+  }
+  ```
