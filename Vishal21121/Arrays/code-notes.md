@@ -1060,3 +1060,54 @@ public class PrintFrom1ToN {
       }
   }
   ```
+
+### Question-21
+
+- [First Repeating Element](https://practice.geeksforgeeks.org/problems/first-repeating-element4018/1)
+
+- topic - `arrays`
+
+- #### Approach
+
+  - Create a HashMap called map to store elements from the array as keys and their occurrence count as values.
+
+  - Iterate through the given array, arr, and for each element, update its occurrence count in the map using getOrDefault and put methods.
+
+  - Initialize an index variable to keep track of the current position while iterating through the array.
+
+  - Iterate through the array again, and for each element, retrieve its occurrence count from the map.
+
+  - If the occurrence count is greater than 1, it means the element is repeating. Return the current index + 1, which is the position of the first repeating element (positions are 1-based).
+
+  - If no repeating element is found in the array, return -1 to indicate that there are no repeating elements.
+
+  In summary, the code uses a HashMap to count the occurrences of each element in the array and then iterates through the array to find the first element with an occurrence count greater than 1, returning its position.
+
+- #### Code
+
+```java
+   class Solution {
+    // Function to return the position of the first repeating element.
+    public static int firstRepeated(int[] arr, int n) {
+        HashMap<Integer,Integer> map = new HashMap<>();
+        for(int el: arr){
+            int val = map.getOrDefault(el,0);
+            map.put(el,val+1);
+        }
+        int index = 0;
+        for(int el: arr){
+            int count = map.get(el);
+            if(count>1){
+                return index+1;
+            }
+            index++;
+        }
+        return -1;
+    }
+}
+```
+
+#### Note:
+
+1. Time complexity: O(n)
+2. Space complexity: O(n)
