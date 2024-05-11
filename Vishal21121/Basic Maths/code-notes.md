@@ -106,3 +106,64 @@
     }
 }
 ```
+
+### Question-3
+
+- [Check Armstrong](https://www.naukri.com/code360/problems/check-armstrong_589?leftPanelTabValue=PROBLEM)
+
+- topic - `maths`
+
+- #### Approach
+
+1. The program starts by importing the `Scanner` class, which is used for getting user input.
+
+2. The `Main` class is defined, which contains the `main` method, the entry point of the program.
+
+3. Inside the `main` method:
+
+   - A `Scanner` object named `in` is created to read input from the standard input stream (`System.in`).
+   - An integer variable `num` is declared and assigned the value entered by the user using `in.nextInt()`.
+   - Another integer variable `temp` is declared and assigned the value of `num`. This is done to preserve the original value of `num` for later comparison.
+   - An integer variable `sum` is declared and initialized to 0. This variable will hold the sum of each digit raised to the power of the number of digits in the input number.
+   - An integer variable `length` is declared and assigned the length of the input number converted to a string using `Integer.toString(num).length()`. This is done to determine the number of digits in the input number.
+
+4. A `while` loop is used to iterate through each digit of the input number (`num`):
+
+   - Inside the loop, the remainder (`rem`) of dividing `num` by 10 (i.e., the last digit of `num`) is calculated using the modulus operator `%`.
+   - The sum is updated by adding the result of raising `rem` to the power of `length` using `Math.pow(rem, length)`.
+   - The last digit is removed from `num` by integer division (`num /= 10`), which effectively shifts the number to the right, removing the last digit.
+
+5. After the loop, the program checks if the original input number (`temp`) is equal to the calculated sum (`sum`):
+
+   - If they are equal, it means the input number is an Armstrong number (a number that is equal to the sum of its own digits raised to the power of the number of digits). In this case, it prints `true`.
+   - If they are not equal, it means the input number is not an Armstrong number. In this case, it prints `false`.
+
+6. The program terminates.
+
+- #### Code
+
+```java
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		int num = in.nextInt();
+		int temp = num;
+		int sum = 0;
+		int length = Integer.toString(num).length();
+		while(num > 0){
+            int rem = num % 10;
+            sum = (int) (sum + Math.pow(rem,length));
+            num /= 10;
+        }
+		if(temp == sum){
+			System.out.println(true);
+		}else{
+			System.out.println(false);
+		}
+	}
+}
+
+```
