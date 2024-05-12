@@ -167,3 +167,57 @@ public class Main {
 }
 
 ```
+
+### Question-4
+
+- [LCM And GCD](https://www.geeksforgeeks.org/problems/lcm-and-gcd4516/1)
+
+- topic - `maths`
+
+- #### Approach
+
+1. The code defines a class named `Solution` with a static method `lcmAndGcd`, which takes two `Long` parameters `A` and `B` and returns an array containing the least common multiple (LCM) and greatest common divisor (GCD) of the two numbers.
+
+2. Inside the `lcmAndGcd` method:
+
+   - Two `long` variables `tempA` and `tempB` are initialized with the values of `A` and `B` respectively. These variables are used to store the original values of `A` and `B`.
+
+   - A `while` loop is used to calculate the GCD of `A` and `B` using the Euclidean algorithm:
+
+     - The loop continues as long as both `A` and `B` are greater than 0.
+     - Inside the loop, it checks whether `A` is greater than `B`. If so, it updates `A` to the remainder of `A` divided by `B` (`A = A % B`).
+     - If `B` is greater than or equal to `A`, it updates `B` to the remainder of `B` divided by `A` (`B = B % A`).
+     - This process continues until either `A` or `B` becomes 0.
+
+   - After the loop, it checks if `A` is equal to 0. If so, it means that `B` is the GCD of the original numbers (`tempA` and `tempB`).
+
+     - In this case, it calculates the LCM using the formula: `(tempA * tempB) / B` and stores it in a variable `lcm`.
+     - It returns an array containing the LCM and the value of `B` (which is the GCD).
+
+   - If `A` is not equal to 0, it means that `A` is the GCD of the original numbers.
+     - In this case, it calculates the LCM using the formula: `(tempA * tempB) / A` and stores it in a variable `lcm`.
+     - It returns an array containing the LCM and the value of `A` (which is the GCD).
+
+- #### Code
+
+```java
+  class Solution {
+    static Long[] lcmAndGcd(Long A , Long B) {
+        long tempA = A;
+        long tempB = B;
+        while(A>0 && B>0){
+            if(A>B){
+                A = A % B;
+            }else{
+                B = B % A;
+            }
+        }
+        if(A == 0){
+            long lcm = (tempA * tempB)/B;
+            return new Long[]{lcm,B};
+        }
+        long lcm = (tempA * tempB)/A;
+        return new Long[]{lcm,A};
+    }
+};
+```
