@@ -68,3 +68,54 @@ class Compute
     }
 }
 ```
+
+### Question-2
+
+- [Print 1 To N Without Loop](https://www.geeksforgeeks.org/problems/print-1-to-n-without-using-loops-1587115620/1)
+
+- topic - `recursion`
+
+- #### Approach
+
+1. **Method `printNos(int N)`**:
+
+   - Invokes the helper method `printNosHelper` with parameters `N` and `1`.
+
+2. **Method `printNosHelper(int n, int count)`**:
+
+   - **Base Case**: If `count` exceeds `n`, the recursion stops (returns).
+   - **Recursive Case**:
+     - Print the current value of `count` followed by a space.
+     - Recursively call `printNosHelper` with `count` incremented by 1.
+
+3. **Recursive Printing**:
+
+   - The `printNosHelper` method prints numbers from `1` to `N` recursively.
+
+4. **Execution Flow**:
+   - Start with `count` as 1.
+   - Print the current `count`.
+   - Increase `count` by 1 and call the helper method again until `count` exceeds `N`.
+
+This approach uses recursion to print numbers from 1 to N sequentially.
+
+- #### Code
+
+```java
+    class Solution
+    {
+
+        public void printNos(int N){
+            printNosHelper(N,1);
+        }
+
+        public void printNosHelper(int n, int count){
+            if(count>n){
+                return;
+            }
+            System.out.print(count+ " ");
+            printNosHelper(n,count+1);
+        }
+    }
+
+```
