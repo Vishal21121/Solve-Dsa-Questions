@@ -119,3 +119,44 @@ This approach uses recursion to print numbers from 1 to N sequentially.
     }
 
 ```
+
+### Question-3
+
+- [Print GFG n times](https://www.geeksforgeeks.org/problems/print-gfg-n-times/1)
+
+- topic - `recursion`
+
+- #### Approach
+
+1. Class Definition: The code defines a class named Solution.
+
+2. printGfg Method:
+   1. Signature: void printGfg(int N)
+   2. This method is the entry point for printing "GFG ".
+   3. It takes an integer N as input.
+   4. It calls the printer method with the value of N and an initial index of 1.
+3. printer Method:
+   1. Signature: void printer(int num, int index)
+   2. This method is responsible for printing "GFG " recursively.
+   3. It takes two parameters: num, the total number of times to print, and index, the current index.
+   4. It checks if the current index is greater than num. If so, it returns, terminating the recursion.
+   5. Otherwise, it prints "GFG " and recursively calls itself with index+1.
+
+- #### Code
+
+```java
+   class Solution {
+
+    void printGfg(int N) {
+       printer(N,1);
+    }
+
+    void printer(int num, int index){
+        if(index>num){
+            return;
+        }
+        System.out.print("GFG ");
+        printer(num,index+1);
+    }
+}
+```
