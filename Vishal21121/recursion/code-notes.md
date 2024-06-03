@@ -160,3 +160,42 @@ This approach uses recursion to print numbers from 1 to N sequentially.
     }
 }
 ```
+
+### Question-4
+
+- [Print N to 1 without loop](https://www.geeksforgeeks.org/problems/print-n-to-1-without-loop/1)
+
+- topic - `recursion`
+
+- #### Approach
+
+1. **Class Definition**: The code defines a class named `Solution`.
+
+2. **printNos Method**:
+
+   - Signature: `void printNos(int N)`
+   - This method prints numbers from `N` down to 1 recursively.
+   - It takes an integer `N` as input.
+
+3. **Base Case**:
+
+   - If `N` is 0, the method returns immediately, terminating the recursion.
+
+4. **Recursive Case**:
+   - It prints the current value of `N` followed by a space.
+   - It then calls itself with the argument `N-1`.
+
+- #### Code
+
+```java
+   class Solution {
+
+    void printNos(int N) {
+        if(N == 0){
+            return;
+        }
+        System.out.print(N + " ");
+        printNos(N-1);
+    }
+}
+```
